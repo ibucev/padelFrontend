@@ -1,0 +1,36 @@
+<div class="flex flex-col items-center">
+    <div class="w-full max-w-sm p-4 space-y-4 bg-white rounded-lg">
+        <h2 class="text-2xl font-bold text-center">Login</h2>
+        <form class="space-y-4" (ngSubmit)="onSubmit()">
+            <div>
+                <label for="email">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    required 
+                    class="w-full px-3 py-2 mt-1 border border-gray-300"
+                    [(ngModel)]="authenticationRequest.email" />            
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    required 
+                    class="w-full px-3 py-2 mt-1 border border-gray-300"
+                    [(ngModel)]="authenticationRequest.password" />            
+            </div>
+            <div *ngIf="errorMessage" class="error">
+                <p>{{ errorMessage }}</p>
+            </div>
+            <div>
+                <button type="submit" class="w-full px-4 py-2 font-medium text-white bg-indigo-600">Login</button>
+            </div>
+        </form>
+        <button (click)="navigateToRegister()" class="text-indigo-600 hover:text-indigo-700 font-semibold text-center">
+            You don't have an account? Let's create it now
+        </button>
+    </div>
+</div>

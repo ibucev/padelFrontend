@@ -1,0 +1,25 @@
+<div class="flex w-1/4 h-screen justify-center  mx-auto" *ngIf="submitted else codeForm">
+    <div class="text-center" *ngIf="isOkay else activationError">
+        <h2>Activation successful!</h2>
+        <p>Your accoutn has been successfully activated.</p>
+        <button class="bg-blue-500 text-white px-6 py-3 rounded mt-4" (click)="redirectToLogin()">Go to login</button>
+    </div>
+    <ng-template #activationError>
+        <div class="text-center">
+            <h2>Activation Failed</h2>
+            <button (click)="submitted = false">Try again</button>
+        </div>
+    </ng-template>
+</div>
+<ng-template #codeForm>
+    <div class="flex w-1/4 h-screen justify-center  mx-auto">
+        <div class="text-center">
+            <h2>Type your activation code</h2>
+            <code-input class="mt-8" [isCodeHidden]="false"
+                        [codeLength]="6"
+                        [code]="'number'"
+                        (codeCompleted)="onCodeCompleted($event)">
+            </code-input>
+        </div>
+    </div>
+</ng-template>

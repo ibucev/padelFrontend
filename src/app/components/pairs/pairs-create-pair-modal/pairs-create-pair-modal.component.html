@@ -1,0 +1,30 @@
+<div class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div class="bg-white rounded-lg shadow-lg p-6 w-96">
+        <h2 class="text-xl font-semibold mb-4">Create Pair</h2>
+
+        <label class="block text-sm font-medium text-gray-700">Player 1</label>
+        <input type="text" [(ngModel)]="searchPlayer1" placeholder="Search players..." class="border p-2 rounded w-full">
+
+        <div *ngIf="searchPlayer1.length" class="w-full mt-1 p-2 border rounded">
+                <div *ngFor="let player of filteredPlayers(searchPlayer1)" (click)="selectPlayer1(player)"
+                    class="cursor-pointer p-2 hover:bg-gray-200">
+                    {{ player.firstname }} {{ player.lastname }}
+                </div>
+        </div>
+
+        <label class="block mt-4 text-sm font-medium text-gray-700">Player 2</label>
+        <input type="text" [(ngModel)]="searchPlayer2" placeholder="Search players..." class="border p-2 rounded w-full">
+
+        <div *ngIf="searchPlayer2.length" class="w-full mt-1 p-2 border rounded">
+                <div *ngFor="let player of filteredPlayers(searchPlayer2)" (click)="selectPlayer2(player)"
+                    class="cursor-pointer p-2 hover:bg-gray-200">
+                    {{ player.firstname }} {{ player.lastname }}
+                </div>
+        </div>
+
+        <div class="flex justify-end mt-4 space-x-2">
+            <button (click)="closeModal.emit()" class="px-4 py-2 bg-gray-300 rounded">Cancel</button>
+            <button (click)="submitPair()" class="px-4 py-2 bg-blue-600 text-white rounded">Create</button>
+        </div>
+    </div>
+</div>
