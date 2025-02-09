@@ -9,6 +9,8 @@ import { LoginComponent } from './app/components/login/login.component';
 import { RegisterComponent } from './app/components/register/register.component';
 import { ActivatePlayerComponent } from './app/components/activate-player/activate-player.component';
 import { PairsListComponent } from './app/components/pairs/pairs-list/pairs-list.component';
+import { MatchesListComponent } from './app/components/matches/matches-list/matches-list.component';
+import { LeagueComponent } from './app/components/league/league.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayerListComponent },
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'activate-player', component: ActivatePlayerComponent},
   { path: 'pairs', component: PairsListComponent},
+  { path: 'matches', component: MatchesListComponent},
+  { path: 'league', component: LeagueComponent},
   { path: '', redirectTo: '/players', pathMatch: 'full' },
   { path: '**', redirectTo: '/players' }
 ];

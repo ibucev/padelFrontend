@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class LeagueComponent {
 
+  constructor(){
+
+  }
+
+  ngOnInit(){
+    console.log("unutar league");
+  }
+
 }
