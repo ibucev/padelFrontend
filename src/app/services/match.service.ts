@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MatchResult } from '../models/match-result.model';
@@ -8,11 +8,20 @@ import { MatchResult } from '../models/match-result.model';
 })
 export class MatchService {
   private baseURL = "http://localhost:8088/api/v1/matches";
+
+    private getHeaders(): HttpHeaders {
+      const token = localStorage.getItem('token');
+      console.log("This is my token " + token);
+      return new HttpHeaders({
+        'Authorization': `Bearer ${token}` 
+      });
+    }
+  
   
     constructor(private httpClient: HttpClient) { }
   
     getMatchesList(): Observable<MatchResult[]> {
-      return this.httpClient.get<MatchResult[]>(`${this.baseURL}`);
+      return this.httpClient.get<MatchResult[]>(`${this.baseURL}`, { headers: this.getHeaders()});
     }
 
 }
