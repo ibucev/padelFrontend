@@ -47,7 +47,7 @@ export class PairsListComponent {
     return this.pairs.filter(pair =>
       `${pair.player1.firstname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
       `${pair.player1.lastname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
-      `${pair.player2.lastname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
+      `${pair.player2.firstname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
       `${pair.player2.lastname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()));
   }
 
