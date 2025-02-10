@@ -24,4 +24,7 @@ export class MatchService {
       return this.httpClient.get<MatchResult[]>(`${this.baseURL}`, { headers: this.getHeaders()});
     }
 
+    getMatchesListByPlayer(playerId: number): Observable<MatchResult[]> {
+      return this.httpClient.get<MatchResult[]>(`${this.baseURL}/${playerId}`, { headers: this.getHeaders() });
+    }
 }

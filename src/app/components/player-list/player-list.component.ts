@@ -57,4 +57,8 @@ export class PlayerListComponent {
   editPlayer(id: number) {
     this.router.navigate(['update-player', id]);
   }
+
+  viewPlayer(id: number) {
+    this.router.navigate(['view-player', id]);
+  }
 }

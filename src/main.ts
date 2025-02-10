@@ -11,6 +11,7 @@ import { ActivatePlayerComponent } from './app/components/activate-player/activa
 import { PairsListComponent } from './app/components/pairs/pairs-list/pairs-list.component';
 import { MatchesListComponent } from './app/components/matches/matches-list/matches-list.component';
 import { LeagueComponent } from './app/components/league/league.component';
+import { PlayerViewComponent } from './app/components/player-view/player-view.component';
 
 const routes: Routes = [
   { path: 'players', component: PlayerListComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'pairs', component: PairsListComponent},
   { path: 'matches', component: MatchesListComponent},
   { path: 'league', component: LeagueComponent},
+  { path: 'view-player/:id', component: PlayerViewComponent},
   { path: '', redirectTo: '/players', pathMatch: 'full' },
   { path: '**', redirectTo: '/players' }
 ];

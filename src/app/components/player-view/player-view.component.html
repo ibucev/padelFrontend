@@ -1,1 +1,44 @@
-<p>player-view works!</p>
+<div class="container mx-auto bg-white shadow-md p-6">
+    <div class="flex flex-col items-center gap-4 max-w-md md:grid md:grid-flow-col md:grid-rows-3 md:gap-4 md:items-start">
+      
+      <div class="md:row-span-3">
+        <img src="assets/images/user-icon.png"
+             alt="Player"
+             class="w-[150px] h-[150px] rounded-full object-cover"/>
+      </div>
+  
+      <div class="md:text-left md:col-span-2">
+        <h1 class="font-bold">{{ player.fullName }}</h1>
+      </div>
+  
+      <div class="md:text-left md:col-span-2 md:row-span-2">
+        <p>Email: {{ player.email }}</p>
+        <p>Position: {{ player.position }}</p>
+        <p>Created: {{ player.creationDate }}</p>
+      </div>
+    </div>
+
+    <table class="table-auto border-collapse border border-gray-300 w-full mt-8">
+        <thead>
+          <tr class="bg-gray-600">
+            <th class="border border-gray-300 px-4 py-2 text-white">Match ID</th>
+            <th class="border border-gray-300 px-4 py-2 text-white">Match Date</th>
+            <th class="border border-gray-300 px-4 py-2 text-white">First Pair</th>
+            <th class="border border-gray-300 px-4 py-2 text-white">Second Pair</th>
+            <th class="border border-gray-300 px-4 py-2 text-white">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let match of matches">
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ match.matchId }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ match.matchDate }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ match.firstPairPlayer1 }} - {{ match.firstPairPlayer2 }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">{{ match.secondPairPlayer1 }} - {{ match.secondPairPlayer2 }}</td>
+            <td class="border border-gray-300 px-4 py-2 text-center">
+                <p *ngFor="let set of match.setResults" class="inline-block">{{ set.firstPairResult }} - {{ set.secondPairResult }} &nbsp;</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  
