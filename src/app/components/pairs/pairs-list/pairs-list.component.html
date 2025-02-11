@@ -38,8 +38,9 @@
         </div>
     </div>
 
-    <button (click)="showModal = true" class="bg-blue-500 text-white px-6 py-3 rounded mt-4 float-right">Create
-        Pair</button>
+    <button (click)="showModal = true" class="bg-blue-500 text-white px-6 py-3 rounded mt-4 float-right">
+        Create Pair
+    </button>
 
     <app-pairs-create-pair-modal *ngIf="showModal" [players]="players" (closeModal)="showModal = false"
         (createPair)="createPair($event)">

@@ -1,0 +1,7 @@
+<input type="text" [(ngModel)]="searchPair" placeholder="Search pair..." class="border p-2 rounded w-full">
+<div *ngIf="searchPair.length" class="w-full mt-1 p-2 border rounded">
+    <div *ngFor="let pair of filteredPairs(searchPair)" (click)="selectPair(pair)"
+        class="cursor-pointer p-2 hover:bg-gray-200">
+        {{ pair.player1.fullName }} {{ pair.player2.fullName }}
+    </div>
+</div>

@@ -40,11 +40,11 @@ export class PairsCreatePairModalComponent {
 
   selectPlayer1(player: Player) {
     this.selectedPlayer1 = player;
-    this.searchPlayer1 = `${player.firstname} ${player.lastname}`; // Fill input with selected name
+    this.searchPlayer1 = `${player.firstname} ${player.lastname}`;
   }
 
   selectPlayer2(player: Player) {
     this.selectedPlayer2 = player;
-    this.searchPlayer2 = `${player.firstname} ${player.lastname}`; // Fill input with selected name
+    this.searchPlayer2 = `${player.firstname} ${player.lastname}`;
   }
 }

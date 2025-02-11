@@ -11,12 +11,10 @@ export class MatchService {
 
     private getHeaders(): HttpHeaders {
       const token = localStorage.getItem('token');
-      console.log("This is my token " + token);
       return new HttpHeaders({
         'Authorization': `Bearer ${token}` 
       });
     }
-  
   
     constructor(private httpClient: HttpClient) { }
   
