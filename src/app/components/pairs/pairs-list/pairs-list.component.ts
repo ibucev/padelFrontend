@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { Pair } from '../../../models/pair.model';
 import { PadelService } from '../../../services/padel.service';
-import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PlayerListComponent } from '../../player-list/player-list.component';
 import { Player } from '../../../models/player';
 import { PairsCreatePairModalComponent } from "../pairs-create-pair-modal/pairs-create-pair-modal.component";
+import { PairService } from '../../../services/pair.service';
 
 @Component({
   selector: 'app-pairs-list',
@@ -21,7 +20,7 @@ export class PairsListComponent {
   showModal: boolean = false;
 
   constructor(private padelService: PadelService,
-    private router: Router
+    private pairService: PairService,
   ) { }
 
   ngOnInit() {
@@ -30,7 +29,7 @@ export class PairsListComponent {
   }
 
   private getPairList() {
-    this.padelService.getPairsList().subscribe(data => {
+    this.pairService.getPairsList().subscribe(data => {
       this.pairs = data;
     });
   }
@@ -54,7 +53,7 @@ export class PairsListComponent {
   createPair(pair: { player1: Player; player2: Player }) {
     console.log('Pair Created:', pair);
     this.showModal = false;
-    this.padelService.createPair(pair.player1.id, pair.player2.id).subscribe(
+    this.pairService.createPair(pair.player1.id, pair.player2.id).subscribe(
       (response) => {
         console.log('Pair created successfully:', response);
         this.getPairList();

@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { SelectPairComponent } from "../../pairs/select-pair/select-pair.component";
 import { MatchResult } from '../../../models/match-result.model';
 import { CreateMatch } from '../../../models/create-match.model';
+import { PairService } from '../../../services/pair.service';
 
 @Component({
   selector: 'app-matches-create',
@@ -32,14 +33,16 @@ export class MatchesCreateComponent {
   selectedPair2: number;
 
 
-  constructor(private padelService: PadelService) { }
+  constructor(private matchService: MatchService,
+    private pairService: PairService
+  ) { }
 
   ngOnInit() {
     this.getPairs();
   }
 
   getPairs() {
-    this.padelService.getPairsList().subscribe(data => {
+    this.pairService.getPairsList().subscribe(data => {
       this.pairs = data;
     })
   }
@@ -55,7 +58,7 @@ export class MatchesCreateComponent {
   addMatchResult() {
     this.match.firstPair = this.selectedPair1;
     this.match.secondPair = this.selectedPair2;
-    this.padelService.createMatch(this.match).subscribe({
+    this.matchService.createMatch(this.match).subscribe({
       next: data => {
         console.log("Match created");
       },

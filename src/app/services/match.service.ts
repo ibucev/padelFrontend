@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MatchResult } from '../models/match-result.model';
+import { CreateMatch } from '../models/create-match.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,9 @@ export class MatchService {
 
     getMatchesListByPlayer(playerId: number): Observable<MatchResult[]> {
       return this.httpClient.get<MatchResult[]>(`${this.baseURL}/${playerId}`, { headers: this.getHeaders() });
+    }
+
+    createMatch(match: CreateMatch): Observable<Object> {
+      return this.httpClient.post(this.baseURL, match, { headers: this.getHeaders() })
     }
 }
