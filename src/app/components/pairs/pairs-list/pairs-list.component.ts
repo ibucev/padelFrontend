@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { Player } from '../../../models/player';
 import { PairsCreatePairModalComponent } from "../pairs-create-pair-modal/pairs-create-pair-modal.component";
 import { PairService } from '../../../services/pair.service';
+import { PairDto } from '../../../models/pair/pair-dto.model';
+import { PlayerDto } from '../../../models/player/player-dto.model';
 
 @Component({
   selector: 'app-pairs-list',
@@ -14,8 +16,8 @@ import { PairService } from '../../../services/pair.service';
   styleUrl: './pairs-list.component.scss'
 })
 export class PairsListComponent {
-  pairs: Pair[];
-  players: Player[];
+  pairs: PairDto[];
+  players: PlayerDto[];
   searchPair: string = '';
   showModal: boolean = false;
 
@@ -31,6 +33,7 @@ export class PairsListComponent {
   private getPairList() {
     this.pairService.getPairsList().subscribe(data => {
       this.pairs = data;
+      console.log(this.pairs)
     });
   }
 
@@ -44,13 +47,13 @@ export class PairsListComponent {
 
   filteredPairs() {
     return this.pairs.filter(pair =>
-      `${pair.player1.firstname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
-      `${pair.player1.lastname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
-      `${pair.player2.firstname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
-      `${pair.player2.lastname}`.toLowerCase().startsWith(this.searchPair.toLowerCase()));
+      `${pair.player1.firstName}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
+      `${pair.player1.lastName}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
+      `${pair.player2.firstName}`.toLowerCase().startsWith(this.searchPair.toLowerCase()) ||
+      `${pair.player2.lastName}`.toLowerCase().startsWith(this.searchPair.toLowerCase()));
   }
 
-  createPair(pair: { player1: Player; player2: Player }) {
+  createPair(pair: { player1: PlayerDto; player2: PlayerDto }) {
     console.log('Pair Created:', pair);
     this.showModal = false;
     this.pairService.createPair(pair.player1.id, pair.player2.id).subscribe(

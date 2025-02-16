@@ -3,6 +3,7 @@ import { Pair } from '../../../models/pair.model';
 import { PadelService } from '../../../services/padel.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { PairDto } from '../../../models/pair/pair-dto.model';
 
 @Component({
   selector: 'app-select-pair',
@@ -11,23 +12,23 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './select-pair.component.scss'
 })
 export class SelectPairComponent {
-  @Input() pairs: Pair[];
-  @Output() pairSelected = new EventEmitter<Pair>;
+  @Input() pairs: PairDto[];
+  @Output() pairSelected = new EventEmitter<PairDto>;
 
   searchPair: string = "";
 
 
   filteredPairs(searchText: string) {
     return this.pairs.filter(pair =>
-      `${pair.player1.firstname}`.toLowerCase().startsWith(searchText.toLowerCase()) ||
-      `${pair.player1.lastname}`.toLowerCase().startsWith(searchText.toLowerCase()) ||
-      `${pair.player2.firstname}`.toLowerCase().startsWith(searchText.toLowerCase()) ||
-      `${pair.player2.lastname}`.toLowerCase().startsWith(searchText.toLowerCase()));
+      `${pair.player1.firstName}`.toLowerCase().startsWith(searchText.toLowerCase()) ||
+      `${pair.player1.lastName}`.toLowerCase().startsWith(searchText.toLowerCase()) ||
+      `${pair.player2.firstName}`.toLowerCase().startsWith(searchText.toLowerCase()) ||
+      `${pair.player2.lastName}`.toLowerCase().startsWith(searchText.toLowerCase()));
   }
 
-  selectPair(pair: Pair) {
+  selectPair(pair: PairDto) {
     this.pairSelected.emit(pair);
-    this.searchPair = `${pair.player1.fullName} - ${pair.player2.fullName}`;
+    this.searchPair = `${pair.player1.firstName} ${pair.player1.lastName} - ${pair.player2.firstName} ${pair.player2.lastName}`;
   }
 
   

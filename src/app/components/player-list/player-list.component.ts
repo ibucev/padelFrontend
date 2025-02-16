@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Player } from '../../models/player';
 import { PadelService } from '../../services/padel.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Pair } from '../../models/pair.model';
 import { FormsModule } from '@angular/forms';
+import { PlayerDto } from '../../models/player/player-dto.model';
 
 @Component({
   selector: 'app-player-list',
@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './player-list.component.scss'
 })
 export class PlayerListComponent {
-  players: Player[];
+  players: PlayerDto[];
   pairs: Pair[];
   searchPlayer: string = '';
 
@@ -39,8 +39,8 @@ export class PlayerListComponent {
 
   filteredPlayers() {
     return this.players.filter(player =>
-      `${player.firstname}`.toLowerCase().startsWith(this.searchPlayer.toLowerCase()) ||
-      `${player.lastname}`.toLowerCase().startsWith(this.searchPlayer.toLowerCase())
+      `${player.firstName}`.toLowerCase().startsWith(this.searchPlayer.toLowerCase()) ||
+      `${player.lastName}`.toLowerCase().startsWith(this.searchPlayer.toLowerCase())
     );
   }
 

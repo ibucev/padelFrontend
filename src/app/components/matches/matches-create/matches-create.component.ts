@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
-import { Match } from '../../../models/match.model';
 import { MatchService } from '../../../services/match.service';
-import { Set } from '../../../models/set.model';
-import { Pair } from '../../../models/pair.model';
-import { PadelService } from '../../../services/padel.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SelectPairComponent } from "../../pairs/select-pair/select-pair.component";
-import { MatchResult } from '../../../models/match-result.model';
 import { CreateMatch } from '../../../models/create-match.model';
 import { PairService } from '../../../services/pair.service';
+import { PairDto } from '../../../models/pair/pair-dto.model';
 
 @Component({
   selector: 'app-matches-create',
@@ -28,7 +24,7 @@ export class MatchesCreateComponent {
     ]
   };
 
-  pairs: Pair[];
+  pairs: PairDto[];
   selectedPair1: number;
   selectedPair2: number;
 
@@ -47,11 +43,11 @@ export class MatchesCreateComponent {
     })
   }
 
-  handlePairSelection1(pair: Pair) {
+  handlePairSelection1(pair: PairDto) {
     this.selectedPair1 = pair.id;
   }
 
-  handlePairSelection2(pair: Pair) {
+  handlePairSelection2(pair: PairDto) {
     this.selectedPair2 = pair.id;
   }
 

@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Player } from '../../../models/player';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PadelService } from '../../../services/padel.service';
+import { PlayerDto } from '../../../models/player/player-dto.model';
 
 @Component({
   selector: 'app-pairs-create-pair-modal',
@@ -11,16 +10,16 @@ import { PadelService } from '../../../services/padel.service';
   styleUrl: './pairs-create-pair-modal.component.scss'
 })
 export class PairsCreatePairModalComponent {
-  @Input() players: Player[] = [];
+  @Input() players: PlayerDto[] = [];
 
   @Output() closeModal = new EventEmitter<void>();
-  @Output() createPair = new EventEmitter<{ player1: Player; player2: Player }>();
+  @Output() createPair = new EventEmitter<{ player1: PlayerDto; player2: PlayerDto }>();
 
   searchPlayer1: string = "";
   searchPlayer2: string = "";
 
-  selectedPlayer1: Player;
-  selectedPlayer2: Player;
+  selectedPlayer1: PlayerDto;
+  selectedPlayer2: PlayerDto;
 
   constructor() {}
 
@@ -29,22 +28,21 @@ export class PairsCreatePairModalComponent {
       this.createPair.emit({ player1: this.selectedPlayer1, player2: this.selectedPlayer2 });
       this.closeModal.emit();
     }
-
   }
 
   filteredPlayers(searchText: string) {
     return this.players.filter(player =>
-      `${player.firstname}`.toLowerCase().startsWith(searchText.toLowerCase()) ||
-      `${player.lastname}`.toLowerCase().startsWith(searchText.toLowerCase()));
+      `${player.firstName}`.toLowerCase().startsWith(searchText.toLowerCase()) ||
+      `${player.lastName}`.toLowerCase().startsWith(searchText.toLowerCase()));
   }
 
-  selectPlayer1(player: Player) {
+  selectPlayer1(player: PlayerDto) {
     this.selectedPlayer1 = player;
-    this.searchPlayer1 = `${player.firstname} ${player.lastname}`;
+    this.searchPlayer1 = `${player.firstName} ${player.lastName}`;
   }
 
-  selectPlayer2(player: Player) {
+  selectPlayer2(player: PlayerDto) {
     this.selectedPlayer2 = player;
-    this.searchPlayer2 = `${player.firstname} ${player.lastname}`;
+    this.searchPlayer2 = `${player.firstName} ${player.lastName}`;
   }
 }

@@ -2,6 +2,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pair } from '../models/pair.model';
+import { PairDto } from '../models/pair/pair-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class PairService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPairsList(): Observable<Pair[]> {
-    return this.httpClient.get<Pair[]>(`${this.basePairURL}`, { headers: this.getHeaders() });
+  getPairsList(): Observable<PairDto[]> {
+    return this.httpClient.get<PairDto[]>(`${this.basePairURL}`, { headers: this.getHeaders() });
   }
 
   createPair(player1Id: number, player2Id: number): Observable<Object> {

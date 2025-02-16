@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Player } from '../models/player';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PlayerDto } from '../models/player/player-dto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class PadelService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getPlayersList(): Observable<Player[]> {
-    return this.httpClient.get<Player[]>(`${this.baseURL}`, { headers: this.getHeaders() });
+  getPlayersList(): Observable<PlayerDto[]> {
+    return this.httpClient.get<PlayerDto[]>(`${this.baseURL}`, { headers: this.getHeaders() });
   }
 
   getPlayerById(id: number): Observable<Player> {

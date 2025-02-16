@@ -23,6 +23,7 @@ export class PlayerEditComponent {
     this.player = new Player();
     this.padelService.getPlayerById(this.route.snapshot.params['id']).subscribe(data => {
       this.player = data;
+      console.log(this.player)
     });
   }
 

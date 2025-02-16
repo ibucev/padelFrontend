@@ -7,7 +7,7 @@
   <div *ngIf="searchPlayer.length" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     <div *ngFor="let player of filteredPlayers()" class="bg-white shadow-md rounded-lg p-6 flex flex-col items-start">
       <h2 class="text-xl font-semibold mb-2">
-        {{ player.firstname }} {{ player.lastname }}
+        {{ player.firstName }} {{ player.lastName }}
       </h2>
       <p class="text-gray-700 mb-1">
         <strong>Email: </strong>{{ player.email }}
@@ -34,14 +34,14 @@
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     <div *ngFor="let player of players" class="bg-white shadow-md rounded-lg p-6 flex flex-col items-start">
-      <h2 class="text-xl font-semibold mb-2">
-        {{ player.firstname }} {{ player.lastname }}
+      <h2 class="w-full text-center text-xl font-semibold  mb-6">
+        {{ player.firstName }} {{ player.lastName }}
       </h2>
       <p class="text-gray-700 mb-1">
-        <strong>Firstname: </strong>{{ player.firstname }}
+        <strong>Firstname: </strong>{{ player.firstName }}
       </p>
       <p class="text-gray-700 mb-1">
-        <strong>Lastname: </strong>{{ player.lastname }}
+        <strong>Lastname: </strong>{{ player.lastName }}
       </p>
       <p class="text-gray-700 mb-1">
         <strong>Email: </strong>{{ player.email }}
@@ -49,14 +49,14 @@
       <p class="text-gray-700 mb-1">
         <strong>Position: </strong>{{ player.position }}
       </p>
-      <div class="mt-4 space-x-2">
-        <button class="bg-red-500 text-white px-4 py-2 rounded" (click)="deletePlayer(player.id)">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4 w-full">
+        <button class="w-full bg-red-500 text-white px-4 py-2 rounded" (click)="deletePlayer(player.id)">
           Delete
         </button>
-        <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="editPlayer(player.id)">
+        <button class="w-full bg-blue-500 text-white px-4 py-2 rounded" (click)="editPlayer(player.id)">
           Edit
         </button>
-        <button class="bg-blue-500 text-white px-4 py-2 rounded" (click)="viewPlayer(player.id)">
+        <button class="w-full bg-blue-500 text-white px-4 py-2 rounded" (click)="viewPlayer(player.id)">
           View
         </button>
       </div>

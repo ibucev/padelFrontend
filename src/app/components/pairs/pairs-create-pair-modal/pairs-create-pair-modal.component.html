@@ -8,7 +8,7 @@
         <div *ngIf="searchPlayer1.length" class="w-full mt-1 p-2 border rounded">
                 <div *ngFor="let player of filteredPlayers(searchPlayer1)" (click)="selectPlayer1(player)"
                     class="cursor-pointer p-2 hover:bg-gray-200">
-                    {{ player.firstname }} {{ player.lastname }}
+                    {{ player.firstName }} {{ player.lastName }}
                 </div>
         </div>
 
@@ -18,7 +18,7 @@
         <div *ngIf="searchPlayer2.length" class="w-full mt-1 p-2 border rounded">
                 <div *ngFor="let player of filteredPlayers(searchPlayer2)" (click)="selectPlayer2(player)"
                     class="cursor-pointer p-2 hover:bg-gray-200">
-                    {{ player.firstname }} {{ player.lastname }}
+                    {{ player.firstName }} {{ player.lastName }}
                 </div>
         </div>
 
